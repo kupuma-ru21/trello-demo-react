@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-function App() {
+const App = () => {
   return <div className="App">App.tsx!!</div>;
-}
+};
 
 export default App;
