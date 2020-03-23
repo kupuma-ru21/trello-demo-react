@@ -1,16 +1,15 @@
 import React, { useState, useCallback } from 'react';
-import HeaderLogo from 'assets/trello_demo.png';
+import HeaderLogo from 'assets/logo.svg';
 
 const Header: React.FC = () => {
-  const [count, setCount] = useState<number>(0);
-  const handleClick = useCallback(() => {
-    setCount(count + 1);
-  }, [count]);
   return (
     <div>
-      {/* <HeaderLogo /> */}
-      <p>{count}</p>
-      <button onClick={handleClick}>+ 1</button>
+      <img
+        src={HeaderLogo}
+        className="HeaderLogo"
+        alt="HeaderLogo"
+        style={{ height: '40px', width: '40px' }}
+      />
     </div>
   );
 };
