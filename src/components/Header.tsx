@@ -3,12 +3,12 @@ import HeaderLogo from 'assets/logo.svg';
 
 const Header: React.FC = () => {
   return (
-    <div>
+    <div style={{ textAlign: 'center' }}>
       <img
         src={HeaderLogo}
         className="HeaderLogo"
         alt="HeaderLogo"
-        style={{ height: '40px', width: '40px' }}
+        style={{ height: '60px', width: '60px' }}
       />
     </div>
   );
