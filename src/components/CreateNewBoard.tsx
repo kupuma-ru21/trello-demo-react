@@ -46,13 +46,9 @@ const CreateNewBoard: React.FC = () => {
   return (
     <div>
       <Popper open={open} anchorEl={anchorEl} placement={placement} transition>
-        {({ TransitionProps }) => (
-          <Fade {...TransitionProps}>
-            <Paper className={classes.typography}>
-              <CreateNewBoardModal />
-            </Paper>
-          </Fade>
-        )}
+        <Paper className={classes.typography}>
+          <CreateNewBoardModal />
+        </Paper>
       </Popper>
       <Button onClick={handleClick('bottom-start')} style={buttonStyle}>
         <h4>Creating a board</h4>
