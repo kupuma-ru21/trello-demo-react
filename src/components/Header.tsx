@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import HeaderLogo from 'assets/logo.svg';
 
 const Header: React.FC = () => {
