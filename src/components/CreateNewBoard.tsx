@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Popper from '@material-ui/core/Popper';
 import Typography from '@material-ui/core/Typography';
@@ -27,11 +27,14 @@ const buttonStyle = {
   borderRadius: 5.5,
 };
 
-const CreateNewBoard = () => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [open, setOpen] = React.useState(false);
-  const [placement, setPlacement] = React.useState();
+const CreateNewBoard: React.FC = () => {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [open, setOpen] = useState<boolean>(false);
+  const [placement, setPlacement] = useState<any>();
   const classes = useStyles();
+
+  console.log(anchorEl, 'anchorEl');
+  console.log(placement, 'anchorEl');
 
   // あとでちゃんとした型づけ (newPlacement: any) (event: any)
   const handleClick = (newPlacement: any) => (event: any) => {
