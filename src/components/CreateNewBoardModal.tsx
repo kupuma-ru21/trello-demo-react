@@ -3,10 +3,10 @@ import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 
-const CreateNewBoardModal = () => {
+const CreateNewBoardModal: React.FC = () => {
   return (
     <div style={{ textAlign: 'center' }}>
-      <p>What shall we call the board?</p>
+      What shall we call the board?
       <Input
         style={{
           backgroundColor: '#181a1b',

@@ -48,10 +48,8 @@ const CreateNewBoard: React.FC = () => {
       <Popper open={open} anchorEl={anchorEl} placement={placement} transition>
         {({ TransitionProps }) => (
           <Fade {...TransitionProps}>
-            <Paper>
-              <Typography className={classes.typography}>
-                <CreateNewBoardModal />
-              </Typography>
+            <Paper className={classes.typography}>
+              <CreateNewBoardModal />
             </Paper>
           </Fade>
         )}
