@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Popper from '@material-ui/core/Popper';
 import Typography from '@material-ui/core/Typography';
@@ -8,6 +8,7 @@ import Paper from '@material-ui/core/Paper';
 
 import CreateNewBoardModal from 'components/CreateNewBoardModal';
 
+import AppContext from 'contexts/AppContext';
 const useStyles = makeStyles(theme => ({
   typography: {
     padding: theme.spacing(2),
@@ -43,6 +44,7 @@ const CreateNewBoard: React.FC = () => {
     setPlacement(newPlacement);
   };
 
+  const { state, dispatch } = useContext(AppContext);
   return (
     <div>
       <Popper open={open} anchorEl={anchorEl} placement={placement} transition>
