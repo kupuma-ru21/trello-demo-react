@@ -1,11 +1,8 @@
 import React, { useState, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Popper from '@material-ui/core/Popper';
-import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import Fade from '@material-ui/core/Fade';
 import Paper from '@material-ui/core/Paper';
-
 import CreateNewBoardModal from 'components/CreateNewBoardModal';
 
 import AppContext from 'contexts/AppContext';
@@ -29,15 +26,12 @@ const buttonStyle = {
 };
 
 const CreateNewBoard: React.FC = () => {
-  const [anchorEl, setAnchorEl] = useState(null);
+  // materialUIの値に対しての型づけはあとで行う。 調べたけどよくわかんない
+  const [anchorEl, setAnchorEl] = useState<null>(null);
   const [open, setOpen] = useState<boolean>(false);
-  const [placement, setPlacement] = useState<any>();
+  const [placement, setPlacement] = useState<undefined>();
   const classes = useStyles();
 
-  console.log(anchorEl, 'anchorEl');
-  console.log(placement, 'anchorEl');
-
-  // あとでちゃんとした型づけ (newPlacement: any) (event: any)
   const handleClick = (newPlacement: any) => (event: any) => {
     setAnchorEl(event.currentTarget);
     setOpen(prev => placement !== newPlacement || !prev);
