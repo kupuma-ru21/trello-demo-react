@@ -12,6 +12,9 @@ const CreateNewBoardModal: React.FC = () => {
   const onChange = (event: InputWord) => {
     setInputWord(event.target.value);
   };
+  const onClick = () => {
+    alert(inputWord);
+  };
   return (
     <div style={{ textAlign: 'center' }}>
       What shall we call the board?
@@ -26,7 +29,9 @@ const CreateNewBoardModal: React.FC = () => {
       />
       <ButtonGroup size="large" style={{ margin: 20 }}>
         <Button>CANCEL</Button>
-        <Button style={{ backgroundColor: '#181a1b' }}>CREATE</Button>
+        <Button style={{ backgroundColor: '#181a1b' }} onClick={onClick}>
+          CREATE
+        </Button>
       </ButtonGroup>
     </div>
   );
