@@ -17,7 +17,7 @@ const CreateNewBoardModal: React.FC = () => {
   };
   return (
     <div style={{ textAlign: 'center' }}>
-      What shall we call the board?
+      <p>What shall we call the board?</p>
       <Input
         style={{
           backgroundColor: '#181a1b',
