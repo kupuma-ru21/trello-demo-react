@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
 
-import sampleFlag from './sampleFlag';
+import createdBordArray from './createdBordArray';
 
-export default combineReducers({ sampleFlag });
+export default combineReducers({ createdBordArray });
