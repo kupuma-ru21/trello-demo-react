@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Popper, { PopperPlacementType } from '@material-ui/core/Popper';
 import Button from '@material-ui/core/Button';
@@ -22,6 +22,15 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
+const boardStyle = {
+  backgroundColor: '#0387c7',
+  width: 345,
+  margin: 20,
+  padding: '25px 0',
+  borderRadius: 5.5,
+  marginTop: 100,
+};
+
 const buttonStyle = {
   backgroundColor: '#9fe7a4',
   width: 345,
@@ -40,6 +49,10 @@ const CreateNewBoard: React.FC = () => {
   const classes = useStyles();
 
   const { state, dispatch } = useContext(AppContext);
+  const addMarginTopArray =
+    state.createdBordArray.length > 1 ? state.createdBordArray.slice(2) : [];
+
+  const [modalFlag, setModalFlag] = useState(false);
 
   const handleClick = (newPlacement: PopperPlacementType) => (
     event: React.MouseEvent<HTMLButtonElement>
@@ -47,19 +60,32 @@ const CreateNewBoard: React.FC = () => {
     setAnchorEl(event.currentTarget);
     setOpen(prev => placement !== newPlacement || !prev);
     setPlacement(newPlacement);
+    setModalFlag(!modalFlag);
   };
+  console.log(state.createdBordArray.length, 'state.createdBordArray.length');
+  console.log(addMarginTopArray, 'addMarginTopArray');
+
   return (
-    <div style={{ display: 'flex' }}>
+    <>
+      <Button onClick={handleClick('bottom-start')} style={buttonStyle}>
+        <h4>Creating a board</h4>
+      </Button>
       <Popper open={open} anchorEl={anchorEl} placement={placement} transition>
         <Paper className={classes.typography}>
           <CreateNewBoardModal />
         </Paper>
       </Popper>
-      <Button onClick={handleClick('bottom-start')} style={buttonStyle}>
-        <h4>Creating a board</h4>
-      </Button>
-      <div>{state.sampleFlag === true ? 'sampleFlag' : ''}</div>
-    </div>
+      {state.createdBordArray.map((val: any, index: number) => (
+        <div key={index} style={boardStyle}>
+          <h4 style={{ textAlign: 'center' }}>{val.text}</h4>
+        </div>
+      ))}
+      {addMarginTopArray.map((val: any, index: number) => (
+        <div key={index} style={boardStyle}>
+          <h4>{val.text}</h4>
+        </div>
+      ))}
+    </>
   );
 };
 
