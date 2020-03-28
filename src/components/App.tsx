@@ -19,7 +19,6 @@ const App: React.FC = () => {
       <AppContext.Provider value={{ state, dispatch }}>
         <Header />
         <CreateNewBoard />
-        <div>sampleFlag</div>
       </AppContext.Provider>
     </div>
   );
