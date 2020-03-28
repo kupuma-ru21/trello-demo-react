@@ -6,7 +6,7 @@ const sampleFlag = (state = false, action: any) => {
   switch (action.type) {
     case CHANGE_SAMPLE_FLAG:
       console.log('CHANGE_SAMPLE_FLAG');
-      return state;
+      return true;
     default:
       return state;
   }

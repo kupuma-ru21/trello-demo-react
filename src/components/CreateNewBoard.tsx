@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Popper, { PopperPlacementType } from '@material-ui/core/Popper';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import CreateNewBoardModal from 'components/CreateNewBoardModal';
+import AppContext from 'contexts/AppContext';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -38,6 +39,8 @@ const CreateNewBoard: React.FC = () => {
   const [placement, setPlacement] = React.useState<PopperPlacementType>();
   const classes = useStyles();
 
+  const { state, dispatch } = useContext(AppContext);
+
   const handleClick = (newPlacement: PopperPlacementType) => (
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
@@ -46,7 +49,7 @@ const CreateNewBoard: React.FC = () => {
     setPlacement(newPlacement);
   };
   return (
-    <div>
+    <div style={{ display: 'flex' }}>
       <Popper open={open} anchorEl={anchorEl} placement={placement} transition>
         <Paper className={classes.typography}>
           <CreateNewBoardModal />
@@ -55,6 +58,7 @@ const CreateNewBoard: React.FC = () => {
       <Button onClick={handleClick('bottom-start')} style={buttonStyle}>
         <h4>Creating a board</h4>
       </Button>
+      <div>{state.sampleFlag === true ? 'sampleFlag' : ''}</div>
     </div>
   );
 };
