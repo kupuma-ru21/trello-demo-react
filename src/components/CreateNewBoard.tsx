@@ -1,11 +1,10 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Popper, { PopperPlacementType } from '@material-ui/core/Popper';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import CreateNewBoardModal from 'components/CreateNewBoardModal';
 
-import AppContext from 'contexts/AppContext';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -46,8 +45,6 @@ const CreateNewBoard: React.FC = () => {
     setOpen(prev => placement !== newPlacement || !prev);
     setPlacement(newPlacement);
   };
-
-  const { state, dispatch } = useContext(AppContext);
   return (
     <div>
       <Popper open={open} anchorEl={anchorEl} placement={placement} transition>
