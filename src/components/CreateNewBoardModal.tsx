@@ -1,19 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
+import AppContext from 'contexts/AppContext';
+import { CHANGE_SAMPLE_FLAG } from 'actions/index';
 
 interface InputWord {
   target: { value: string };
 }
 
 const CreateNewBoardModal: React.FC = () => {
+  const { state, dispatch } = useContext(AppContext);
+  console.log(state);
   const [inputWord, setInputWord] = useState<string>('');
   const onChange = (event: InputWord) => {
     setInputWord(event.target.value);
   };
   const onClick = () => {
-    alert(inputWord);
+    dispatch({ type: CHANGE_SAMPLE_FLAG });
   };
   return (
     <div style={{ textAlign: 'center' }}>

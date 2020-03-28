@@ -1,0 +1,1 @@
+export const CHANGE_SAMPLE_FLAG = 'CHANGE_SAMPLE_FLAG';
