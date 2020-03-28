@@ -1,21 +1,26 @@
 import React, { useState, useContext } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Popper from '@material-ui/core/Popper';
+import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import Popper, { PopperPlacementType } from '@material-ui/core/Popper';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import CreateNewBoardModal from 'components/CreateNewBoardModal';
 
 import AppContext from 'contexts/AppContext';
-const useStyles = makeStyles(theme => ({
-  typography: {
-    padding: theme.spacing(2),
-    marginTop: -5,
-    borderTop: '1px solid rgb(240,240,240)',
-    backgroundColor: '#9fe7a4',
-    width: 313,
-    borderRadius: '0 0 5.5px 5.5px',
-  },
-}));
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      width: 500,
+    },
+    typography: {
+      padding: theme.spacing(2),
+      marginTop: -5,
+      borderTop: '1px solid rgb(240,240,240)',
+      backgroundColor: '#9fe7a4',
+      width: 313,
+      borderRadius: '0 0 5.5px 5.5px',
+    },
+  })
+);
 
 const buttonStyle = {
   backgroundColor: '#9fe7a4',
@@ -27,12 +32,16 @@ const buttonStyle = {
 
 const CreateNewBoard: React.FC = () => {
   // materialUIの値に対しての型づけはあとで行う。 調べたけどよくわかんない
-  const [anchorEl, setAnchorEl] = useState<null>(null);
-  const [open, setOpen] = useState<boolean>(false);
-  const [placement, setPlacement] = useState<undefined>();
+  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
+    null
+  );
+  const [open, setOpen] = React.useState(false);
+  const [placement, setPlacement] = React.useState<PopperPlacementType>();
   const classes = useStyles();
 
-  const handleClick = (newPlacement: any) => (event: any) => {
+  const handleClick = (newPlacement: PopperPlacementType) => (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
     setAnchorEl(event.currentTarget);
     setOpen(prev => placement !== newPlacement || !prev);
     setPlacement(newPlacement);
