@@ -3,7 +3,7 @@ import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import AppContext from 'contexts/AppContext';
-import { CHANGE_SAMPLE_FLAG } from 'actions/index';
+import { CREATE_NEW_BOARD } from 'actions/index';
 
 interface InputWord {
   target: { value: string };
@@ -11,13 +11,12 @@ interface InputWord {
 
 const CreateNewBoardModal: React.FC = () => {
   const { state, dispatch } = useContext(AppContext);
-  console.log(state);
   const [inputWord, setInputWord] = useState<string>('');
   const onChange = (event: InputWord) => {
     setInputWord(event.target.value);
   };
   const onClick = () => {
-    dispatch({ type: CHANGE_SAMPLE_FLAG });
+    dispatch({ type: CREATE_NEW_BOARD, text: inputWord });
   };
   return (
     <div style={{ textAlign: 'center' }}>
