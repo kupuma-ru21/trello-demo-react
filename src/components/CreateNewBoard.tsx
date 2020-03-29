@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import CreateNewBoardModal from 'components/CreateNewBoardModal';
 import AppContext from 'contexts/AppContext';
+import { CRRENT_WINDOW_WIDTH } from 'actions/index';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -23,6 +24,14 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const boardStyle = {
+  backgroundColor: '#0387c7',
+  width: 345,
+  margin: 20,
+  padding: '25px 0',
+  borderRadius: 5.5,
+};
+
+const sampleBoardStyle = {
   backgroundColor: '#0387c7',
   width: 345,
   margin: 20,
@@ -48,10 +57,9 @@ const CreateNewBoard: React.FC = () => {
   const [placement, setPlacement] = React.useState<PopperPlacementType>();
   const classes = useStyles();
 
+  // ここ自作
   const { state, dispatch } = useContext(AppContext);
-  const addMarginTopArray =
-    state.createdBordArray.length > 1 ? state.createdBordArray.slice(2) : [];
-
+  console.log(state);
   const [modalFlag, setModalFlag] = useState(false);
 
   const handleClick = (newPlacement: PopperPlacementType) => (
@@ -60,10 +68,26 @@ const CreateNewBoard: React.FC = () => {
     setAnchorEl(event.currentTarget);
     setOpen(prev => placement !== newPlacement || !prev);
     setPlacement(newPlacement);
+    // モーダル開閉のflag
     setModalFlag(!modalFlag);
+    dispatch({
+      type: CRRENT_WINDOW_WIDTH,
+      createdBordArray: state.createdBordArray,
+    });
   };
-  console.log(state.createdBordArray.length, 'state.createdBordArray.length');
-  console.log(addMarginTopArray, 'addMarginTopArray');
+
+  // ↓ windowサイズでどうにか判別したい
+  window.addEventListener('resize', () => {
+    dispatch({
+      type: CRRENT_WINDOW_WIDTH,
+      createdBordArray: state.createdBordArray,
+    });
+  });
+
+  const lines1Array =
+    window.innerWidth > 1154 && state.createdBordArray.length > 2
+      ? state.createdBordArray.slice(0, 2)
+      : state.createdBordArray;
 
   return (
     <>
@@ -75,16 +99,18 @@ const CreateNewBoard: React.FC = () => {
           <CreateNewBoardModal />
         </Paper>
       </Popper>
-      {state.createdBordArray.map((val: any, index: number) => (
+      {lines1Array.map((val: any, index: number) => (
         <div key={index} style={boardStyle}>
           <h4 style={{ textAlign: 'center' }}>{val.text}</h4>
         </div>
       ))}
-      {addMarginTopArray.map((val: any, index: number) => (
-        <div key={index} style={boardStyle}>
-          <h4>{val.text}</h4>
-        </div>
-      ))}
+      {state.addMarginTopArray.length > 0
+        ? state.addMarginTopArray.map((val: any, index: number) => (
+            <div key={index} style={sampleBoardStyle}>
+              <h4 style={{ textAlign: 'center' }}>{val.text}</h4>
+            </div>
+          ))
+        : ''}
     </>
   );
 };

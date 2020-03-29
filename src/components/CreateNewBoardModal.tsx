@@ -10,7 +10,7 @@ interface InputWord {
 }
 
 const CreateNewBoardModal: React.FC = () => {
-  const { state, dispatch } = useContext(AppContext);
+  const { dispatch } = useContext(AppContext);
   const [inputWord, setInputWord] = useState<string>('');
   const onChange = (event: InputWord) => {
     setInputWord(event.target.value);
