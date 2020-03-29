@@ -31,13 +31,12 @@ const boardStyle = {
   borderRadius: 5.5,
 };
 
-const sampleBoardStyle = {
+const boardStyleAddMarginTop = {
   backgroundColor: '#0387c7',
   width: 345,
-  margin: 20,
+  margin: '200px 20px 20px 20px ',
   padding: '25px 0',
   borderRadius: 5.5,
-  marginTop: 100,
 };
 
 const buttonStyle = {
@@ -84,10 +83,25 @@ const CreateNewBoard: React.FC = () => {
     });
   });
 
-  const lines1Array =
+  /*
+    モーダル開いてる時
+    2行目の配列だけにmarginTopを付与する為、配列を切り分ける処理
+  */
+  const firstLineArray =
     window.innerWidth > 1154 && state.createdBordArray.length > 2
       ? state.createdBordArray.slice(0, 2)
       : state.createdBordArray;
+  const secondLineArray =
+    window.innerWidth > 1154 && state.createdBordArray.length > 2
+      ? state.createdBordArray.slice(2, 5)
+      : [];
+  const afterThirdLine =
+    window.innerWidth > 1154 && state.createdBordArray.length > 2
+      ? state.createdBordArray.slice(5)
+      : [];
+
+  const secondLineStyle =
+    modalFlag === true ? boardStyleAddMarginTop : boardStyle;
 
   return (
     <>
@@ -99,14 +113,21 @@ const CreateNewBoard: React.FC = () => {
           <CreateNewBoardModal />
         </Paper>
       </Popper>
-      {lines1Array.map((val: any, index: number) => (
+      {firstLineArray.map((val: any, index: number) => (
         <div key={index} style={boardStyle}>
           <h4 style={{ textAlign: 'center' }}>{val.text}</h4>
         </div>
       ))}
-      {state.addMarginTopArray.length > 0
-        ? state.addMarginTopArray.map((val: any, index: number) => (
-            <div key={index} style={sampleBoardStyle}>
+      {secondLineArray.length > 0
+        ? secondLineArray.map((val: any, index: number) => (
+            <div key={index} style={secondLineStyle}>
+              <h4 style={{ textAlign: 'center' }}>{val.text}</h4>
+            </div>
+          ))
+        : ''}
+      {afterThirdLine.length > 0
+        ? afterThirdLine.map((val: any, index: number) => (
+            <div key={index} style={boardStyle}>
               <h4 style={{ textAlign: 'center' }}>{val.text}</h4>
             </div>
           ))
