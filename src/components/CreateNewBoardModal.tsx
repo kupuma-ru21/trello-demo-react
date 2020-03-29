@@ -3,20 +3,22 @@ import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import AppContext from 'contexts/AppContext';
-import { CREATE_NEW_BOARD } from 'actions/index';
+import { CREATE_NEW_BOARD, SEND_OPEN_FLAG } from 'actions/index';
 
 interface InputWord {
   target: { value: string };
 }
 
 const CreateNewBoardModal: React.FC = () => {
-  const { dispatch } = useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
   const [inputWord, setInputWord] = useState<string>('');
   const onChange = (event: InputWord) => {
     setInputWord(event.target.value);
   };
   const onClick = () => {
+    if (inputWord === '') return;
     dispatch({ type: CREATE_NEW_BOARD, text: inputWord });
+    dispatch({ type: SEND_OPEN_FLAG, modalFlag: state.openFlag });
   };
   return (
     <div style={{ textAlign: 'center' }}>

@@ -6,9 +6,11 @@ import DisplayBoardArea from 'components/DisplayBoardArea';
 
 export interface State {
   createdBordArray: any[];
+  openFlag: boolean;
 }
 export const initialState: State = {
   createdBordArray: [],
+  openFlag: false,
 };
 
 const App: React.FC = () => {

@@ -1,1 +1,2 @@
 export const CREATE_NEW_BOARD = 'CREATE_NEW_BOARD';
+export const SEND_OPEN_FLAG = 'SEND_OPEN_FLAG';
