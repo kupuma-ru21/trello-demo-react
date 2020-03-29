@@ -6,11 +6,9 @@ import DisplayBoardArea from 'components/DisplayBoardArea';
 
 export interface State {
   createdBordArray: any[];
-  addMarginTopArray: any[];
 }
 export const initialState: State = {
   createdBordArray: [],
-  addMarginTopArray: [],
 };
 
 const App: React.FC = () => {

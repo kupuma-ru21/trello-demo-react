@@ -5,7 +5,6 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import CreateNewBoardModal from 'components/CreateNewBoardModal';
 import AppContext from 'contexts/AppContext';
-import { CRRENT_WINDOW_WIDTH } from 'actions/index';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -48,7 +47,6 @@ const buttonStyle = {
 };
 
 const CreateNewBoard: React.FC = () => {
-  // materialUIの値に対しての型づけはあとで行う。 調べたけどよくわかんない
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
     null
   );
@@ -56,9 +54,7 @@ const CreateNewBoard: React.FC = () => {
   const [placement, setPlacement] = React.useState<PopperPlacementType>();
   const classes = useStyles();
 
-  // ここ自作
-  const { state, dispatch } = useContext(AppContext);
-  console.log(state);
+  const { state } = useContext(AppContext);
   const [modalFlag, setModalFlag] = useState(false);
 
   const handleClick = (newPlacement: PopperPlacementType) => (
@@ -67,22 +63,8 @@ const CreateNewBoard: React.FC = () => {
     setAnchorEl(event.currentTarget);
     setOpen(prev => placement !== newPlacement || !prev);
     setPlacement(newPlacement);
-    // モーダル開閉のflag
     setModalFlag(!modalFlag);
-    dispatch({
-      type: CRRENT_WINDOW_WIDTH,
-      createdBordArray: state.createdBordArray,
-    });
   };
-
-  // ↓ windowサイズでどうにか判別したい
-  window.addEventListener('resize', () => {
-    dispatch({
-      type: CRRENT_WINDOW_WIDTH,
-      createdBordArray: state.createdBordArray,
-    });
-  });
-
   /*
     モーダル開いてる時
     2行目の配列だけにmarginTopを付与する為、配列を切り分ける処理
