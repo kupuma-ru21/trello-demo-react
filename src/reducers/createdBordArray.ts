@@ -3,7 +3,6 @@ import { State } from 'components/App';
 
 const initialState: State = {
   createdBordArray: [],
-  addMarginTopArray: [],
 };
 
 const createdBordArray = (
