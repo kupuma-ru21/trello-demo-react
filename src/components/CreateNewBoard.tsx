@@ -87,19 +87,23 @@ const CreateNewBoard: React.FC = () => {
     モーダル開いてる時
     2行目の配列だけにmarginTopを付与する為、配列を切り分ける処理
   */
-  const firstLineArray =
-    window.innerWidth > 1154 && state.createdBordArray.length > 2
-      ? state.createdBordArray.slice(0, 2)
-      : state.createdBordArray;
-  const secondLineArray =
-    window.innerWidth > 1154 && state.createdBordArray.length > 2
-      ? state.createdBordArray.slice(2, 5)
-      : [];
-  const afterThirdLine =
-    window.innerWidth > 1154 && state.createdBordArray.length > 2
-      ? state.createdBordArray.slice(5)
-      : [];
-
+  let firstLineArray = [];
+  let secondLineArray = [];
+  let afterThirdLine = [];
+  if (window.innerWidth > 1154) {
+    firstLineArray = state.createdBordArray.slice(0, 2);
+    secondLineArray = state.createdBordArray.slice(2, 5);
+    afterThirdLine = state.createdBordArray.slice(5);
+  }
+  if (1155 > window.innerWidth && window.innerWidth > 770) {
+    firstLineArray = state.createdBordArray.slice(0, 1);
+    secondLineArray = state.createdBordArray.slice(1, 3);
+    afterThirdLine = state.createdBordArray.slice(3);
+  }
+  if (window.innerWidth < 770) {
+    secondLineArray = state.createdBordArray.slice(0, 1);
+    afterThirdLine = state.createdBordArray.slice(1);
+  }
   const secondLineStyle =
     modalFlag === true ? boardStyleAddMarginTop : boardStyle;
 
