@@ -1,10 +1,9 @@
 import { CREATE_NEW_BOARD } from 'actions/index';
+import { State } from 'components/App';
 
-export interface State {
-  createdBordArray: any[];
-}
-export const initialState: State = {
+const initialState: State = {
   createdBordArray: [],
+  addMarginTopArray: [],
 };
 
 const createdBordArray = (
