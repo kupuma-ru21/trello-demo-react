@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import AppContext from 'contexts/AppContext';
+import { Link } from 'react-router-dom';
 
 const boardStyle = {
   backgroundColor: '#0387c7',
@@ -44,25 +45,29 @@ const Board = () => {
     state.openFlag === true ? boardStyleAddMarginTop : boardStyle;
   return (
     <>
-      {console.log(firstLineArray, 'firstLineArray')}
       {firstLineArray.map((val: any, index: number) => (
-        <div key={index} style={boardStyle}>
-          <h4 style={{ textAlign: 'center' }}>{val.text}</h4>
-        </div>
+        <Link to="/about">
+          <div key={index} style={boardStyle}>
+            <h4 style={{ textAlign: 'center' }}>{val.text}</h4>
+          </div>
+        </Link>
       ))}
-      {console.log(secondLineArray, 'secondLineArray')}
       {secondLineArray.length > 0
         ? secondLineArray.map((val: any, index: number) => (
-            <div key={index} style={secondLineStyle}>
-              <h4 style={{ textAlign: 'center' }}>{val.text}</h4>
-            </div>
+            <Link to="/about">
+              <div key={index} style={secondLineStyle}>
+                <h4 style={{ textAlign: 'center' }}>{val.text}</h4>
+              </div>
+            </Link>
           ))
         : ''}
       {afterThirdLine.length > 0
         ? afterThirdLine.map((val: any, index: number) => (
-            <div key={index} style={boardStyle}>
-              <h4 style={{ textAlign: 'center' }}>{val.text}</h4>
-            </div>
+            <Link to="/about">
+              <div key={index} style={boardStyle}>
+                <h4 style={{ textAlign: 'center' }}>{val.text}</h4>
+              </div>
+            </Link>
           ))
         : ''}
     </>
