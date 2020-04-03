@@ -1,5 +1,5 @@
 import { SEND_OPEN_FLAG } from 'actions/index';
-import { State } from 'components/App';
+import { State } from 'components/Routing';
 
 const initialState: State = {
   createdBordArray: [],
