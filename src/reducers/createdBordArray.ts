@@ -1,5 +1,5 @@
 import { CREATE_NEW_BOARD } from 'actions/index';
-import { State } from 'components/App';
+import { State } from 'components/Routing';
 
 const initialState: State = {
   createdBordArray: [],

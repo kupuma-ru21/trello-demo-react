@@ -8,6 +8,8 @@ const boardStyle = {
   margin: 20,
   padding: '25px 0',
   borderRadius: 5.5,
+  textDecoration: 'unset',
+  color: 'aliceblue',
 };
 
 const boardStyleAddMarginTop = {
@@ -46,27 +48,21 @@ const Board = () => {
   return (
     <>
       {firstLineArray.map((val: any, index: number) => (
-        <Link to="/about">
-          <div key={index} style={boardStyle}>
-            <h4 style={{ textAlign: 'center' }}>{val.text}</h4>
-          </div>
+        <Link to="/about" key={index} style={boardStyle} data-text={val.text}>
+          <h4 style={{ textAlign: 'center' }}>{val.text}</h4>
         </Link>
       ))}
       {secondLineArray.length > 0
         ? secondLineArray.map((val: any, index: number) => (
-            <Link to="/about">
-              <div key={index} style={secondLineStyle}>
-                <h4 style={{ textAlign: 'center' }}>{val.text}</h4>
-              </div>
+            <Link to="/about" key={index} style={secondLineStyle}>
+              <h4 style={{ textAlign: 'center' }}>{val.text}</h4>
             </Link>
           ))
         : ''}
       {afterThirdLine.length > 0
         ? afterThirdLine.map((val: any, index: number) => (
-            <Link to="/about">
-              <div key={index} style={boardStyle}>
-                <h4 style={{ textAlign: 'center' }}>{val.text}</h4>
-              </div>
+            <Link to="/about" key={index} style={boardStyle}>
+              <h4 style={{ textAlign: 'center' }}>{val.text}</h4>
             </Link>
           ))
         : ''}

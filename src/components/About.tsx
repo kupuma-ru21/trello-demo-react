@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
+import AppContext from 'contexts/AppContext';
+
 const About = () => {
+  const { state } = useContext(AppContext);
+  console.log(state, 'About');
   return (
     <div>
       <h1>About</h1>
