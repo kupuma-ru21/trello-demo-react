@@ -1,2 +1,3 @@
 export const CREATE_NEW_BOARD = 'CREATE_NEW_BOARD';
 export const SEND_OPEN_FLAG = 'SEND_OPEN_FLAG';
+export const TRANSITION_TEXT = 'TRANSITION_TEXT';

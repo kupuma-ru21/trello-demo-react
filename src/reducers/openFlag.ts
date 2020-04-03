@@ -4,6 +4,7 @@ import { State } from 'components/Routing';
 const initialState: State = {
   createdBordArray: [],
   openFlag: false,
+  transitionText: '',
 };
 
 const openFlag = (state = initialState.openFlag, action: any) => {

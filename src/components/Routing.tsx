@@ -3,15 +3,17 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import reducer from 'reducers/index';
 import AppContext from 'contexts/AppContext';
 import App from './App';
-import About from './About';
+import TransitionDestination from './TransitionDestination';
 
 export interface State {
   createdBordArray: any[];
   openFlag: boolean;
+  transitionText: string;
 }
 export const initialState: State = {
   createdBordArray: [],
   openFlag: false,
+  transitionText: '',
 };
 
 const Routing = () => {
@@ -22,7 +24,11 @@ const Routing = () => {
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={App} />
-            <Route exact path="/about" component={About} />
+            <Route
+              exact
+              path="/createdBoard"
+              component={TransitionDestination}
+            />
           </Switch>
         </BrowserRouter>
       </AppContext.Provider>
