@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import AppContext from 'contexts/AppContext';
 import { Link } from 'react-router-dom';
+import { TRANSITION_TEXT } from 'actions/index';
 
 const boardStyle = {
   backgroundColor: '#0387c7',
@@ -45,23 +46,43 @@ const Board = () => {
   }
   const secondLineStyle =
     state.openFlag === true ? boardStyleAddMarginTop : boardStyle;
+  const { dispatch } = useContext(AppContext);
+  const onClick = (event: any) => {
+    dispatch({ type: TRANSITION_TEXT, text: event.currentTarget.dataset.text });
+  };
   return (
     <>
       {firstLineArray.map((val: any, index: number) => (
-        <Link to="/about" key={index} style={boardStyle} data-text={val.text}>
+        <Link
+          to="/createdBoard"
+          key={index}
+          style={boardStyle}
+          data-text={val.text}
+          onClick={onClick}
+        >
           <h4 style={{ textAlign: 'center' }}>{val.text}</h4>
         </Link>
       ))}
       {secondLineArray.length > 0
         ? secondLineArray.map((val: any, index: number) => (
-            <Link to="/about" key={index} style={secondLineStyle}>
+            <Link
+              to="/createdBoard"
+              key={index}
+              style={secondLineStyle}
+              onClick={onClick}
+            >
               <h4 style={{ textAlign: 'center' }}>{val.text}</h4>
             </Link>
           ))
         : ''}
       {afterThirdLine.length > 0
         ? afterThirdLine.map((val: any, index: number) => (
-            <Link to="/about" key={index} style={boardStyle}>
+            <Link
+              to="/createdBoard"
+              key={index}
+              style={boardStyle}
+              onClick={onClick}
+            >
               <h4 style={{ textAlign: 'center' }}>{val.text}</h4>
             </Link>
           ))
