@@ -19,10 +19,16 @@ const boardStyleAddMarginTop = {
   margin: '200px 20px 20px 20px ',
   padding: '25px 0',
   borderRadius: 5.5,
+  textDecoration: 'unset',
+  color: 'aliceblue',
 };
 
 const Board = () => {
   const { state } = useContext(AppContext);
+  state.createdBordArray =
+    localStorage.storageArray === undefined
+      ? state.createdBordArray
+      : JSON.parse(localStorage.storageArray);
   /*
     モーダル開いてる時
     2行目の配列だけにmarginTopを付与する為、配列を切り分ける処理
