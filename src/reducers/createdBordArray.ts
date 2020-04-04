@@ -13,7 +13,8 @@ const createdBordArray = (
 ) => {
   switch (action.type) {
     case CREATE_NEW_BOARD:
-      const sampleObj = { text: action.text };
+      const id = state.length === 0 ? 1 : state[state.length - 1].id + 1;
+      const sampleObj = { id, text: action.text };
       const setStorageArray = JSON.stringify([...state, sampleObj]);
       localStorage.setItem('storageArray', setStorageArray);
       return [...state, sampleObj];
