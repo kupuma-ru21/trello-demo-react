@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import AppContext from 'contexts/AppContext';
 import { Link } from 'react-router-dom';
-import { TRANSITION_TEXT } from 'actions/index';
+import { TRANSITION_TEXT, SEND_OPEN_FLAG_FALSE } from 'actions/index';
 
 const boardStyle = {
   backgroundColor: '#0387c7',
@@ -54,7 +54,10 @@ const Board = () => {
     state.openFlag === true ? boardStyleAddMarginTop : boardStyle;
   const { dispatch } = useContext(AppContext);
   const onClick = (event: any) => {
-    dispatch({ type: TRANSITION_TEXT, text: event.currentTarget.dataset.text });
+    dispatch(
+      { type: TRANSITION_TEXT, text: event.currentTarget.dataset.text },
+      dispatch({ type: SEND_OPEN_FLAG_FALSE, modalFlag: state.openFlag })
+    );
   };
   return (
     <>
@@ -75,6 +78,7 @@ const Board = () => {
               to="/createdBoard"
               key={index}
               style={secondLineStyle}
+              data-text={val.text}
               onClick={onClick}
             >
               <h4 style={{ textAlign: 'center' }}>{val.text}</h4>
@@ -87,6 +91,7 @@ const Board = () => {
               to="/createdBoard"
               key={index}
               style={boardStyle}
+              data-text={val.text}
               onClick={onClick}
             >
               <h4 style={{ textAlign: 'center' }}>{val.text}</h4>
