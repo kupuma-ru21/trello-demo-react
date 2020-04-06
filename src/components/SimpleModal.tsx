@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import CancelIcon from '@material-ui/icons/Cancel';
 
 const AddListAreaStyle = {
   display: 'flex',
@@ -15,7 +16,7 @@ const modalStyle = {
   padding: '20px 12px',
   width: 250,
   margin: '20px 0',
-  height: 75,
+  height: 100,
   borderRadius: 5,
   marginLeft: 20,
 };
@@ -30,7 +31,7 @@ const inputStyle = {
 const SimpleModal = () => {
   const [addListFlag, setAddListFlag] = useState(true);
   const onClick = () => {
-    setAddListFlag(false);
+    setAddListFlag(!addListFlag);
   };
 
   return (
@@ -42,9 +43,33 @@ const SimpleModal = () => {
         <h4>Add a list...</h4>
       </div>
       <div style={addListFlag === false ? modalStyle : { display: 'none' }}>
-        <form>
-          <input style={inputStyle} placeholder="add a list" />
-        </form>
+        <div>
+          <form style={{ position: 'relative', marginBottom: 20 }}>
+            <input style={inputStyle} placeholder="add a list" />
+            <CancelIcon
+              style={{
+                position: 'absolute',
+                right: '-20px',
+                top: '-25px',
+                cursor: 'pointer',
+              }}
+              onClick={onClick}
+            />
+          </form>
+          <div
+            style={{
+              textAlign: 'center',
+              backgroundColor: '#9fe7a4',
+              width: 80,
+              padding: '10px 0',
+              borderRadius: 5,
+              float: 'right',
+              cursor: 'pointer',
+            }}
+          >
+            保存
+          </div>
+        </div>
       </div>
     </div>
   );
