@@ -34,43 +34,50 @@ const SimpleModal = () => {
     setAddListFlag(!addListFlag);
   };
 
+  const sampleArray = [{ addListText: 'Add a list...', saveText: '保存' }];
   return (
-    <div>
-      <div
-        style={addListFlag === true ? AddListAreaStyle : { display: 'none' }}
-        onClick={onClick}
-      >
-        <h4>Add a list...</h4>
-      </div>
-      <div style={addListFlag === false ? modalStyle : { display: 'none' }}>
-        <div>
-          <form style={{ position: 'relative', marginBottom: 20 }}>
-            <input style={inputStyle} placeholder="add a list" />
-            <CancelIcon
-              style={{
-                position: 'absolute',
-                right: '-20px',
-                top: '-25px',
-                cursor: 'pointer',
-              }}
-              onClick={onClick}
-            />
-          </form>
+    <div id="targetId">
+      {sampleArray.map((val, index) => (
+        <div key={index}>
           <div
-            style={{
-              textAlign: 'center',
-              backgroundColor: '#9fe7a4',
-              width: 80,
-              padding: '10px 0',
-              borderRadius: 5,
-              float: 'right',
-              cursor: 'pointer',
-            }}
+            style={
+              addListFlag === true ? AddListAreaStyle : { display: 'none' }
+            }
+            onClick={onClick}
           >
-            保存
+            {val.addListText}
+          </div>
+          <div style={addListFlag === false ? modalStyle : { display: 'none' }}>
+            <div>
+              <form style={{ position: 'relative', marginBottom: 20 }}>
+                <input style={inputStyle} placeholder="add a list" />
+                <CancelIcon
+                  style={{
+                    position: 'absolute',
+                    right: '-20px',
+                    top: '-25px',
+                    cursor: 'pointer',
+                  }}
+                  onClick={onClick}
+                />
+              </form>
+              <div
+                style={{
+                  textAlign: 'center',
+                  backgroundColor: '#9fe7a4',
+                  width: 80,
+                  padding: '10px 0',
+                  borderRadius: 5,
+                  float: 'right',
+                  cursor: 'pointer',
+                }}
+              >
+                {val.saveText}
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      ))}
     </div>
   );
 };
