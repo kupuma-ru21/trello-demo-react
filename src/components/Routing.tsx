@@ -6,14 +6,18 @@ import App from './App';
 import TransitionDestination from './TransitionDestination';
 
 export interface State {
-  createdBordArray: any[];
-  openFlag: boolean;
-  transitionText: string;
+  homeReducer: {
+    createdBordArray: any[];
+    openFlag: boolean;
+    transitionText: string;
+  };
 }
 export const initialState: State = {
-  createdBordArray: [],
-  openFlag: false,
-  transitionText: '',
+  homeReducer: {
+    createdBordArray: [],
+    openFlag: false,
+    transitionText: '',
+  },
 };
 
 const Routing = () => {

@@ -25,9 +25,9 @@ const boardStyleAddMarginTop = {
 
 const Board = () => {
   const { state } = useContext(AppContext);
-  state.createdBordArray =
+  state.homeReducer.createdBordArray =
     localStorage.storageArray === undefined
-      ? state.createdBordArray
+      ? state.homeReducer.createdBordArray
       : JSON.parse(localStorage.storageArray);
   /*
     モーダル開いてる時
@@ -37,26 +37,29 @@ const Board = () => {
   let secondLineArray = [];
   let afterThirdLine = [];
   if (window.innerWidth > 1154) {
-    firstLineArray = state.createdBordArray.slice(0, 2);
-    secondLineArray = state.createdBordArray.slice(2, 5);
-    afterThirdLine = state.createdBordArray.slice(5);
+    firstLineArray = state.homeReducer.createdBordArray.slice(0, 2);
+    secondLineArray = state.homeReducer.createdBordArray.slice(2, 5);
+    afterThirdLine = state.homeReducer.createdBordArray.slice(5);
   }
   if (1155 > window.innerWidth && window.innerWidth > 770) {
-    firstLineArray = state.createdBordArray.slice(0, 1);
-    secondLineArray = state.createdBordArray.slice(1, 3);
-    afterThirdLine = state.createdBordArray.slice(3);
+    firstLineArray = state.homeReducer.createdBordArray.slice(0, 1);
+    secondLineArray = state.homeReducer.createdBordArray.slice(1, 3);
+    afterThirdLine = state.homeReducer.createdBordArray.slice(3);
   }
   if (window.innerWidth < 770) {
-    secondLineArray = state.createdBordArray.slice(0, 1);
-    afterThirdLine = state.createdBordArray.slice(1);
+    secondLineArray = state.homeReducer.createdBordArray.slice(0, 1);
+    afterThirdLine = state.homeReducer.createdBordArray.slice(1);
   }
   const secondLineStyle =
-    state.openFlag === true ? boardStyleAddMarginTop : boardStyle;
+    state.homeReducer.openFlag === true ? boardStyleAddMarginTop : boardStyle;
   const { dispatch } = useContext(AppContext);
   const onClick = (event: any) => {
     dispatch(
       { type: TRANSITION_TEXT, text: event.currentTarget.dataset.text },
-      dispatch({ type: SEND_OPEN_FLAG_FALSE, modalFlag: state.openFlag })
+      dispatch({
+        type: SEND_OPEN_FLAG_FALSE,
+        modalFlag: state.homeReducer.openFlag,
+      })
     );
   };
   return (
