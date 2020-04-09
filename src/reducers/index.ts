@@ -1,7 +1,5 @@
 import { combineReducers } from 'redux';
 
-import createdBordArray from './createdBordArray';
-import openFlag from './openFlag';
-import transitionText from './transitionText';
+import homeReducer from 'reducers/home';
 
-export default combineReducers({ createdBordArray, openFlag, transitionText });
+export default combineReducers({ homeReducer });

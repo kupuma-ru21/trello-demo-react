@@ -42,7 +42,7 @@ const CreateNewBoard: React.FC = () => {
   ) => {
     setAnchorEl(event.currentTarget);
     setPlacement(newPlacement);
-    dispatch({ type: SEND_OPEN_FLAG, modalFlag: state.openFlag });
+    dispatch({ type: SEND_OPEN_FLAG, modalFlag: state.homeReducer.openFlag });
   };
 
   return (
@@ -51,7 +51,7 @@ const CreateNewBoard: React.FC = () => {
         <h4>Creating a board</h4>
       </Button>
       <Popper
-        open={state.openFlag}
+        open={state.homeReducer.openFlag}
         anchorEl={anchorEl}
         placement={placement}
         transition

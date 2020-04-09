@@ -2,12 +2,14 @@ import { SEND_OPEN_FLAG, SEND_OPEN_FLAG_FALSE } from 'actions/index';
 import { State } from 'components/Routing';
 
 const initialState: State = {
-  createdBordArray: [],
-  openFlag: false,
-  transitionText: '',
+  homeReducer: {
+    createdBordArray: [],
+    openFlag: false,
+    transitionText: '',
+  },
 };
 
-const openFlag = (state = initialState.openFlag, action: any) => {
+const openFlag = (state = initialState.homeReducer.openFlag, action: any) => {
   switch (action.type) {
     case SEND_OPEN_FLAG:
       return !state;

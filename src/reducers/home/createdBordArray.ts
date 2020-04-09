@@ -2,13 +2,15 @@ import { CREATE_NEW_BOARD } from 'actions/index';
 import { State } from 'components/Routing';
 
 const initialState: State = {
-  createdBordArray: [],
-  openFlag: false,
-  transitionText: '',
+  homeReducer: {
+    createdBordArray: [],
+    openFlag: false,
+    transitionText: '',
+  },
 };
 
 const createdBordArray = (
-  state = initialState.createdBordArray,
+  state = initialState.homeReducer.createdBordArray,
   action: any
 ) => {
   switch (action.type) {

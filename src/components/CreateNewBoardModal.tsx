@@ -18,7 +18,7 @@ const CreateNewBoardModal: React.FC = () => {
   const onClick = () => {
     if (inputWord === '') return;
     dispatch({ type: CREATE_NEW_BOARD, text: inputWord });
-    dispatch({ type: SEND_OPEN_FLAG, modalFlag: state.openFlag });
+    dispatch({ type: SEND_OPEN_FLAG, modalFlag: state.homeReducer.openFlag });
   };
   return (
     <div style={{ textAlign: 'center' }}>
