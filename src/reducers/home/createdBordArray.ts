@@ -7,6 +7,7 @@ const initialState: State = {
     openFlag: false,
     transitionText: '',
   },
+  cloneAddList: [],
 };
 
 const createdBordArray = (

@@ -7,6 +7,7 @@ const initialState: State = {
     openFlag: false,
     transitionText: '',
   },
+  cloneAddList: [],
 };
 
 const openFlag = (state = initialState.homeReducer.openFlag, action: any) => {
