@@ -1,4 +1,4 @@
-import { CLONE_ADD_LIST, CLEATE_ADD_LIST } from 'actions/index';
+import { CLEATE_ADD_LIST } from 'actions/index';
 import { State } from 'components/Routing';
 
 const initialState: State = {
@@ -7,14 +7,18 @@ const initialState: State = {
     openFlag: false,
     transitionText: '',
   },
-  cloneAddList: [],
+  createBoardReducer: {
+    cloneAddList: [],
+    afterCloneAddList: [],
+  },
 };
 
-const cloneAddList = (state = initialState.cloneAddList, action: any) => {
+const cloneAddList = (
+  state = initialState.createBoardReducer.cloneAddList,
+  action: any
+) => {
   const add_list = { addListText: 'Add a list...', saveText: '保存' };
   switch (action.type) {
-    case CLONE_ADD_LIST:
-      return [...state, add_list];
     case CLEATE_ADD_LIST:
       return [add_list];
     default:

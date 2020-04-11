@@ -7,7 +7,10 @@ const initialState: State = {
     openFlag: false,
     transitionText: '',
   },
-  cloneAddList: [],
+  createBoardReducer: {
+    cloneAddList: [],
+    afterCloneAddList: [],
+  },
 };
 
 const openFlag = (state = initialState.homeReducer.openFlag, action: any) => {

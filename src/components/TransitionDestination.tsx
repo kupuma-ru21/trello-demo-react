@@ -21,7 +21,7 @@ const About = () => {
   return (
     <div>
       <div style={textBackStyle}>
-        <h1 style={textStyle}>{state.transitionText}</h1>
+        <h1 style={textStyle}>{state.homeReducer.transitionText}</h1>
       </div>
       <SimpleModal />
       <Link to="/">Homeへ戻る</Link>

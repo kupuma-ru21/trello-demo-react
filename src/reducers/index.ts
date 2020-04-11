@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
 import homeReducer from 'reducers/home';
-import cloneAddList from 'reducers/cloneAddList';
+import createBoardReducer from 'reducers/createBoard';
 
-export default combineReducers({ homeReducer, cloneAddList });
+export default combineReducers({ homeReducer, createBoardReducer });
