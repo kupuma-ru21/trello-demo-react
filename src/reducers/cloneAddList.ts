@@ -16,7 +16,7 @@ const cloneAddList = (state = initialState.cloneAddList, action: any) => {
     case CLONE_ADD_LIST:
       return [...state, add_list];
     case CLEATE_ADD_LIST:
-      return [...state, add_list];
+      return [add_list];
     default:
       return state;
   }

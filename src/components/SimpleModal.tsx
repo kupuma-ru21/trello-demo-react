@@ -39,12 +39,13 @@ const SimpleModal = () => {
   const { state, dispatch } = useContext(AppContext);
   const onSave = () => {
     dispatch({ type: CLONE_ADD_LIST });
+    setAddListFlag(!addListFlag);
   };
   useEffect(() => {
     dispatch({ type: CLEATE_ADD_LIST });
   }, [dispatch]);
   return (
-    <div>
+    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
       {state.cloneAddList.map((val: any, index: number) => (
         <div key={index}>
           <div
