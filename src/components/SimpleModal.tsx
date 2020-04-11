@@ -7,7 +7,7 @@ const AddListAreaStyle = {
   display: 'flex',
   backgroundColor: '#0a2c74',
   margin: 20,
-  padding: '20px 40px',
+  padding: '40px 40px',
   borderRadius: 5,
   width: 'fit-content',
   cursor: 'pointer',
@@ -28,6 +28,13 @@ const inputStyle = {
   borderRadius: 5,
   fontSize: 16,
   padding: '11px 15px',
+};
+const afterCloneAddListStyle = {
+  backgroundColor: '#575757',
+  display: 'inline-block',
+  verticalAlign: 'top',
+  padding: '5px 10px',
+  margin: 20,
 };
 interface InputWord {
   target: { value: string };
@@ -58,7 +65,26 @@ const SimpleModal = () => {
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>
       {state.createBoardReducer.afterCloneAddList.map(
         (val: { addListText: string }, index: number) => (
-          <div key={index}>{val.addListText}</div>
+          <div key={index} style={afterCloneAddListStyle}>
+            <h4
+              style={{
+                textAlign: 'center',
+              }}
+            >
+              {val.addListText}
+            </h4>
+            <hr />
+            <label>
+              <input
+                style={{
+                  padding: '11px 15px',
+                  fontSize: 16,
+                  borderRadius: 5,
+                  width: 200,
+                }}
+              ></input>
+            </label>
+          </div>
         )
       )}
       {state.createBoardReducer.cloneAddList.map((val: any, index: number) => (
