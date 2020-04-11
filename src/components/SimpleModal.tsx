@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import CancelIcon from '@material-ui/icons/Cancel';
 import AppContext from 'contexts/AppContext';
-import { CLONE_ADD_LIST, CLEATE_ADD_LIST } from 'actions/index';
+import { CLEATE_ADD_LIST, AFER_CLONE_ADD_LIST } from 'actions/index';
 
 const AddListAreaStyle = {
   display: 'flex',
@@ -29,24 +29,39 @@ const inputStyle = {
   fontSize: 16,
   padding: '11px 15px',
 };
+interface InputWord {
+  target: { value: string };
+}
 
 const SimpleModal = () => {
-  const [addListFlag, setAddListFlag] = useState(true);
+  const [addListFlag, setAddListFlag] = useState<boolean>(true);
   const onClick = () => {
     setAddListFlag(!addListFlag);
+  };
+  const [inputWord, setInputWord] = useState<string>('');
+  const addListInput = (event: InputWord) => {
+    setInputWord(event.target.value);
   };
 
   const { state, dispatch } = useContext(AppContext);
   const onSave = () => {
-    dispatch({ type: CLONE_ADD_LIST });
-    setAddListFlag(!addListFlag);
+    if (inputWord !== '') {
+      dispatch({ type: AFER_CLONE_ADD_LIST, addListText: inputWord });
+      setAddListFlag(!addListFlag);
+      setInputWord('');
+    }
   };
   useEffect(() => {
     dispatch({ type: CLEATE_ADD_LIST });
   }, [dispatch]);
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-      {state.cloneAddList.map((val: any, index: number) => (
+      {state.createBoardReducer.afterCloneAddList.map(
+        (val: { addListText: string }, index: number) => (
+          <div key={index}>{val.addListText}</div>
+        )
+      )}
+      {state.createBoardReducer.cloneAddList.map((val: any, index: number) => (
         <div key={index}>
           <div
             style={
@@ -59,7 +74,12 @@ const SimpleModal = () => {
           <div style={addListFlag === false ? modalStyle : { display: 'none' }}>
             <div>
               <form style={{ position: 'relative', marginBottom: 20 }}>
-                <input style={inputStyle} placeholder="add a list" />
+                <input
+                  style={inputStyle}
+                  placeholder="add a list"
+                  value={inputWord}
+                  onChange={addListInput}
+                />
                 <CancelIcon
                   style={{
                     position: 'absolute',

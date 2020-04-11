@@ -11,7 +11,10 @@ export interface State {
     openFlag: boolean;
     transitionText: string;
   };
-  cloneAddList: any[];
+  createBoardReducer: {
+    cloneAddList: any[];
+    afterCloneAddList: any[];
+  };
 }
 export const initialState: State = {
   homeReducer: {
@@ -19,7 +22,10 @@ export const initialState: State = {
     openFlag: false,
     transitionText: '',
   },
-  cloneAddList: [],
+  createBoardReducer: {
+    cloneAddList: [],
+    afterCloneAddList: [],
+  },
 };
 
 const Routing = () => {

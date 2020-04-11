@@ -1,4 +1,4 @@
-import { TRANSITION_TEXT } from 'actions/index';
+import { AFER_CLONE_ADD_LIST } from 'actions/index';
 import { State } from 'components/Routing';
 
 const initialState: State = {
@@ -13,16 +13,16 @@ const initialState: State = {
   },
 };
 
-const transitionText = (
-  state = initialState.homeReducer.transitionText,
+const afterCloneAddList = (
+  state = initialState.createBoardReducer.afterCloneAddList,
   action: any
 ) => {
   switch (action.type) {
-    case TRANSITION_TEXT:
-      return action.text;
+    case AFER_CLONE_ADD_LIST:
+      return [...state, { addListText: action.addListText }];
     default:
       return state;
   }
 };
 
-export default transitionText;
+export default afterCloneAddList;
