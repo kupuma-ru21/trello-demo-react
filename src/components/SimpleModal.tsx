@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import CancelIcon from '@material-ui/icons/Cancel';
+import AppContext from 'contexts/AppContext';
+import { CLONE_ADD_LIST, CLEATE_ADD_LIST } from 'actions/index';
 
 const AddListAreaStyle = {
   display: 'flex',
@@ -34,10 +36,16 @@ const SimpleModal = () => {
     setAddListFlag(!addListFlag);
   };
 
-  const sampleArray = [{ addListText: 'Add a list...', saveText: '保存' }];
+  const { state, dispatch } = useContext(AppContext);
+  const onSave = () => {
+    dispatch({ type: CLONE_ADD_LIST });
+  };
+  useEffect(() => {
+    dispatch({ type: CLEATE_ADD_LIST });
+  }, [dispatch]);
   return (
-    <div id="targetId">
-      {sampleArray.map((val, index) => (
+    <div>
+      {state.cloneAddList.map((val: any, index: number) => (
         <div key={index}>
           <div
             style={
@@ -71,6 +79,7 @@ const SimpleModal = () => {
                   float: 'right',
                   cursor: 'pointer',
                 }}
+                onClick={onSave}
               >
                 {val.saveText}
               </div>
