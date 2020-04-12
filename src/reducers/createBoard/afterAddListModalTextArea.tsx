@@ -19,7 +19,7 @@ const afterAddListModalTextArea = (
 ) => {
   switch (action.type) {
     case SEND_TEXT_AFER_ADD_LIST_MODAL:
-      return [...state, { text: action.addListContentText }];
+      return [...state, { id: action.id, text: action.addListContentText }];
     default:
       return state;
   }

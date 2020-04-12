@@ -13,9 +13,11 @@ const AfterAddListModal = () => {
   const onChange = (event: InputWord) => {
     setInputWord(event.target.value);
   };
-  const onSave = () => {
+  const onSave = (event: any) => {
+    const id = Number(event.currentTarget.dataset.index);
     dispatch({
       type: SEND_TEXT_AFER_ADD_LIST_MODAL,
+      id,
       addListContentText: inputWord,
     });
     setInputWord('');
@@ -23,8 +25,8 @@ const AfterAddListModal = () => {
   return (
     <div>
       {state.createBoardReducer.afterAddListModal.map(
-        (val: { addListText: string }, index: number) => (
-          <div key={index} className="afterAddListStyle">
+        (val: { addListText: string }, afterAddListModalIndex: number) => (
+          <div key={afterAddListModalIndex} className="afterAddListStyle">
             <h4
               style={{
                 textAlign: 'center',
@@ -42,7 +44,11 @@ const AfterAddListModal = () => {
                 />
               </label>
             </div>
-            <div className="saveButton" onClick={onSave}>
+            <div
+              className="saveButton"
+              data-index={afterAddListModalIndex}
+              onClick={onSave}
+            >
               保存
             </div>
             <div
@@ -53,9 +59,19 @@ const AfterAddListModal = () => {
               }
             >
               {state.createBoardReducer.afterAddListModalTextArea.map(
-                (val: { text: string }, index: number) => (
-                  <div key={index} className="addListContentText">
-                    {val.text}
+                (
+                  val: { id: number; text: string },
+                  afterAddListModalTextAreaIndex: number
+                ) => (
+                  <div
+                    key={afterAddListModalTextAreaIndex}
+                    className={
+                      val.id === afterAddListModalIndex
+                        ? 'addListContentText'
+                        : ''
+                    }
+                  >
+                    {val.id === afterAddListModalIndex ? val.text : ''}
                   </div>
                 )
               )}
