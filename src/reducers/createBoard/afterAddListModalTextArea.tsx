@@ -1,4 +1,4 @@
-import { TRANSITION_TEXT } from 'actions/index';
+import { SEND_TEXT_AFER_ADD_LIST_MODAL } from 'actions/index';
 import { State } from 'components/Routing';
 
 const initialState: State = {
@@ -13,16 +13,16 @@ const initialState: State = {
   },
 };
 
-const transitionText = (
-  state = initialState.homeReducer.transitionText,
+const afterAddListModalTextArea = (
+  state = initialState.createBoardReducer.afterAddListModalTextArea,
   action: any
 ) => {
   switch (action.type) {
-    case TRANSITION_TEXT:
-      return action.text;
+    case SEND_TEXT_AFER_ADD_LIST_MODAL:
+      return [...state, { text: action.addListContentText }];
     default:
       return state;
   }
 };
 
-export default transitionText;
+export default afterAddListModalTextArea;
