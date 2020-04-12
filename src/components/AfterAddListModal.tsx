@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import AppContext from 'contexts/AppContext';
+import { SEND_TEXT_AFER_ADD_LIST_MODAL } from 'actions/index';
 import 'styles/ModalArea.scss';
 
 interface InputWord {
@@ -7,15 +8,16 @@ interface InputWord {
 }
 
 const AfterAddListModal = () => {
-  const { state } = useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
   const [inputWord, setInputWord] = useState<string>('');
   const onChange = (event: InputWord) => {
     setInputWord(event.target.value);
-    console.log(inputWord);
   };
-  const samplaArray = [];
   const onSave = () => {
-    samplaArray.push({ text: inputWord });
+    dispatch({
+      type: SEND_TEXT_AFER_ADD_LIST_MODAL,
+      addListContentText: inputWord,
+    });
     setInputWord('');
   };
   return (
@@ -28,7 +30,6 @@ const AfterAddListModal = () => {
                 textAlign: 'center',
               }}
             >
-              {console.log(val)}
               {val.addListText}
             </h4>
             <hr />
@@ -43,6 +44,21 @@ const AfterAddListModal = () => {
             </div>
             <div className="saveButton" onClick={onSave}>
               保存
+            </div>
+            <div
+              style={
+                state.createBoardReducer.afterAddListModalTextArea.length > 0
+                  ? { marginTop: 70 }
+                  : {}
+              }
+            >
+              {state.createBoardReducer.afterAddListModalTextArea.map(
+                (val: { text: string }, index: number) => (
+                  <div key={index} className="addListContentText">
+                    {val.text}
+                  </div>
+                )
+              )}
             </div>
           </div>
         )

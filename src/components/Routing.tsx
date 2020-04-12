@@ -13,6 +13,7 @@ export interface State {
   };
   createBoardReducer: {
     afterAddListModal: any[];
+    afterAddListModalTextArea: any[];
   };
 }
 export const initialState: State = {
@@ -23,6 +24,7 @@ export const initialState: State = {
   },
   createBoardReducer: {
     afterAddListModal: [],
+    afterAddListModalTextArea: [],
   },
 };
 

@@ -9,10 +9,11 @@ const initialState: State = {
   },
   createBoardReducer: {
     afterAddListModal: [],
+    afterAddListModalTextArea: [],
   },
 };
 
-const afterCloneAddList = (
+const afterAddListModal = (
   state = initialState.createBoardReducer.afterAddListModal,
   action: any
 ) => {
@@ -24,4 +25,4 @@ const afterCloneAddList = (
   }
 };
 
-export default afterCloneAddList;
+export default afterAddListModal;

@@ -9,6 +9,7 @@ const initialState: State = {
   },
   createBoardReducer: {
     afterAddListModal: [],
+    afterAddListModalTextArea: [],
   },
 };
 
