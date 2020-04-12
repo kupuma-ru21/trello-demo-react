@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import AppContext from 'contexts/AppContext';
 import { AFER_CLONE_ADD_LIST } from 'actions/index';
 import CancelIcon from '@material-ui/icons/Cancel';
-import 'styles/ModalArea.scss';
+import 'styles/AddListModal.scss';
 
 interface InputWord {
   target: { value: string };
@@ -28,7 +28,7 @@ const AddListModal = () => {
   return (
     <div>
       <div
-        className={addListFlag === true ? 'AddListAreaStyle' : 'displayNone'}
+        className={addListFlag === true ? 'addListArea' : 'displayNone'}
         onClick={onClick}
       >
         Add a list...
