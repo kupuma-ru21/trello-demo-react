@@ -1,0 +1,62 @@
+.afterCloneAddListStyle {
+  background-color: #575757;
+  display: inline-block;
+  vertical-align: top;
+  padding: 5px 10px;
+  margin: 20px;
+
+  .afterCloneAddListStyle-input {
+    padding: 11px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    width: 200px;
+  }
+}
+
+.AddListAreaStyle {
+  display: flex;
+  background-color: #0a2c74;
+  margin: 20px;
+  padding: 40px 40px;
+  border-radius: 5px;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.modalStyle {
+  background-color: #575757;
+  padding: 20px 12px;
+  width: 250px;
+  margin: 20px 0;
+  height: 100px;
+  border-radius: 5px;
+  margin-left: 20px;
+
+  .inputStyle {
+    border: 2.5px solid;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 11px 15px;
+  }
+
+  .cancelIcon {
+    position: absolute;
+    right: -20px;
+    top: -25px;
+    cursor: pointer;
+  }
+
+  .saveButton {
+    text-align: center;
+    background-color: #9fe7a4;
+    width: 80px;
+    padding: 10px 0;
+    border-radius: 5px;
+    float: right;
+    cursor: pointer;
+  }
+}
+
+.displayNone {
+  display: none;
+}
