@@ -8,12 +8,12 @@ const initialState: State = {
     transitionText: '',
   },
   createBoardReducer: {
-    afterCloneAddList: [],
+    afterAddListModal: [],
   },
 };
 
 const afterCloneAddList = (
-  state = initialState.createBoardReducer.afterCloneAddList,
+  state = initialState.createBoardReducer.afterAddListModal,
   action: any
 ) => {
   switch (action.type) {
