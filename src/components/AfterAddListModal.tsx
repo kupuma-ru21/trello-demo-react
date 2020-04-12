@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import AppContext from 'contexts/AppContext';
 import { SEND_TEXT_AFER_ADD_LIST_MODAL } from 'actions/index';
-import 'styles/ModalArea.scss';
+import 'styles/AfterAddListModal.scss';
 
 interface InputWord {
   target: { value: string };
