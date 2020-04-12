@@ -1,11 +1,11 @@
 import React from 'react';
 import AddListModal from 'components/AddListModal';
-import AfterCloneAddListModal from 'components/AfterCloneAddListModal';
+import AfterAddListModal from 'components/AfterAddListModal';
 
 const ModalArea = () => {
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-      <AfterCloneAddListModal />
+      <AfterAddListModal />
       <AddListModal />
     </div>
   );

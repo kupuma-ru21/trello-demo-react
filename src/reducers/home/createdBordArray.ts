@@ -8,7 +8,7 @@ const initialState: State = {
     transitionText: '',
   },
   createBoardReducer: {
-    afterCloneAddList: [],
+    afterAddListModal: [],
   },
 };
 

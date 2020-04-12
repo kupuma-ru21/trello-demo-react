@@ -12,7 +12,7 @@ export interface State {
     transitionText: string;
   };
   createBoardReducer: {
-    afterCloneAddList: any[];
+    afterAddListModal: any[];
   };
 }
 export const initialState: State = {
@@ -22,7 +22,7 @@ export const initialState: State = {
     transitionText: '',
   },
   createBoardReducer: {
-    afterCloneAddList: [],
+    afterAddListModal: [],
   },
 };
 

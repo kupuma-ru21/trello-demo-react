@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import afterCloneAddList from 'reducers/createBoard/afterCloneAddList';
-const createBoardReducer = combineReducers({ afterCloneAddList });
+import afterAddListModal from 'reducers/createBoard/afterCloneAddList';
+const createBoardReducer = combineReducers({ afterAddListModal });
 
 export default createBoardReducer;
