@@ -12,7 +12,6 @@ export interface State {
     transitionText: string;
   };
   createBoardReducer: {
-    cloneAddList: any[];
     afterCloneAddList: any[];
   };
 }
@@ -23,7 +22,6 @@ export const initialState: State = {
     transitionText: '',
   },
   createBoardReducer: {
-    cloneAddList: [],
     afterCloneAddList: [],
   },
 };
