@@ -4,6 +4,7 @@
   vertical-align: top;
   padding: 5px 10px;
   margin: 20px;
+  border-radius: 5px;
 
   .afterCloneAddListStyle-input {
     padding: 11px 15px;
@@ -45,16 +46,16 @@
     top: -25px;
     cursor: pointer;
   }
+}
 
-  .saveButton {
-    text-align: center;
-    background-color: #9fe7a4;
-    width: 80px;
-    padding: 10px 0;
-    border-radius: 5px;
-    float: right;
-    cursor: pointer;
-  }
+.saveButton {
+  text-align: center;
+  background-color: #9fe7a4;
+  width: 80px;
+  padding: 10px 0;
+  border-radius: 5px;
+  float: right;
+  cursor: pointer;
 }
 
 .displayNone {

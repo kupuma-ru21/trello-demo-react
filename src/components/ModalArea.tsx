@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import CancelIcon from '@material-ui/icons/Cancel';
 import AppContext from 'contexts/AppContext';
 import { AFER_CLONE_ADD_LIST } from 'actions/index';
-import 'styles/SimpleModal.scss';
+import 'styles/ModalArea.scss';
 
 interface InputWord {
   target: { value: string };
@@ -39,9 +39,12 @@ const SimpleModal = () => {
               {val.addListText}
             </h4>
             <hr />
-            <label>
-              <input className="afterCloneAddListStyle-input"></input>
-            </label>
+            <div style={{ margin: 10 }}>
+              <label>
+                <input className="afterCloneAddListStyle-input"></input>
+              </label>
+            </div>
+            <div className="saveButton">保存</div>
           </div>
         )
       )}

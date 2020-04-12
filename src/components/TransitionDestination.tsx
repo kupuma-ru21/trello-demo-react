@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import AppContext from 'contexts/AppContext';
-import SimpleModal from 'components/SimpleModal';
+import ModalArea from 'components/ModalArea';
 
 const textBackStyle = {
   display: 'flex',
@@ -23,7 +23,7 @@ const About = () => {
       <div style={textBackStyle}>
         <h1 style={textStyle}>{state.homeReducer.transitionText}</h1>
       </div>
-      <SimpleModal />
+      <ModalArea />
       <Link to="/">Homeへ戻る</Link>
     </div>
   );
