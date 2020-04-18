@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef } from 'react';
 import AppContext from 'contexts/AppContext';
 import { SEND_TEXT_AFER_ADD_LIST_MODAL } from 'actions/index';
 import 'styles/AfterAddListModal.scss';
@@ -9,19 +9,24 @@ interface InputWord {
 
 const AfterAddListModal = () => {
   const { state, dispatch } = useContext(AppContext);
-  const [inputWord, setInputWord] = useState<string>('');
-  const onChange = (event: InputWord) => {
-    setInputWord(event.target.value);
-  };
+
+  // 配列のinputを個々で判別
+  const els = useRef<any>([]);
+  state.createBoardReducer.afterAddListModal.forEach((val: any, index: any) => {
+    els.current[index] = React.createRef<HTMLInputElement>();
+  });
+
   const onSave = (event: any) => {
     const id = Number(event.currentTarget.dataset.index);
+    if (els.current[id].current.value === '') return;
     dispatch({
       type: SEND_TEXT_AFER_ADD_LIST_MODAL,
       id,
-      addListContentText: inputWord,
+      addListContentText: els.current[id].current.value,
     });
-    setInputWord('');
+    els.current[id].current.value = '';
   };
+
   return (
     <div>
       {state.createBoardReducer.afterAddListModal.map(
@@ -38,9 +43,8 @@ const AfterAddListModal = () => {
             <div style={{ margin: 10 }}>
               <label>
                 <input
+                  ref={els.current[afterAddListModalIndex]}
                   className="afterAddListStyle-input"
-                  value={inputWord}
-                  onChange={onChange}
                 />
               </label>
             </div>
