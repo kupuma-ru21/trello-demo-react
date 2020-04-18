@@ -1,11 +1,8 @@
 import React, { useContext, useRef } from 'react';
 import AppContext from 'contexts/AppContext';
 import { SEND_TEXT_AFER_ADD_LIST_MODAL } from 'actions/index';
+import AfterAddListModalTextArea from 'components/AfterAddListModalTextArea';
 import 'styles/AfterAddListModal.scss';
-
-interface InputWord {
-  target: { value: string };
-}
 
 const AfterAddListModal = () => {
   const { state, dispatch } = useContext(AppContext);
@@ -62,23 +59,9 @@ const AfterAddListModal = () => {
                   : {}
               }
             >
-              {state.createBoardReducer.afterAddListModalTextArea.map(
-                (
-                  val: { id: number; text: string },
-                  afterAddListModalTextAreaIndex: number
-                ) => (
-                  <div
-                    key={afterAddListModalTextAreaIndex}
-                    className={
-                      val.id === afterAddListModalIndex
-                        ? 'addListContentText'
-                        : ''
-                    }
-                  >
-                    {val.id === afterAddListModalIndex ? val.text : ''}
-                  </div>
-                )
-              )}
+              <AfterAddListModalTextArea
+                afterAddListModalIndex={afterAddListModalIndex}
+              />
             </div>
           </div>
         )
